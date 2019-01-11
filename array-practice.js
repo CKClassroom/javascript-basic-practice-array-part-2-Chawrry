@@ -4,10 +4,16 @@
 
 // 1. 建立一個長度 50，數值介於 40~100 的陣列 (亂數產生) (Array)
 var array = [];
-const randon402100 = () => Math.floor(Math.random()*60 + 40);
-for (let i=0 ; i<50 ; i++) {
-    array.push(randon402100());
+for (let i=40 ; i<=100 ; i++) {
+    array.push(i);
 }
+for (let i=0 ; i<61 ; i++) {
+    let index = Math.floor(Math.random()*60);
+    let temp = array[i];
+    array[i] = array[index];
+    array[index] = temp;
+}
+array = array.slice(0,50);
 console.log(array);
 // 2. 篩選出大於 60 的結果
 var gt60 = array.filter(num => num > 60);
@@ -17,7 +23,7 @@ var maxValue = Math.max(...array);
 console.log(maxValue);
 // 4. 計算全部數值的合計數
 const reducer = (a,b) => a + b;
-var sum = array.reduce(reducer,array.length);
+var sum = array.reduce(reducer);
 console.log(sum);
 // 5. 找出最小值
 var minValue = Math.min(...array);
